@@ -1,26 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "../../app/globals.css";
 
 const PokeDetails = () => {
+
+    const [pokemonName, setPokemonName] = useState("");
+
+    const handlePokemonName = () => {
+        const path = window.location.pathname.split("/")
+        const name = path[path.length - 1]
+        setPokemonName(name)
+    }
+
+    useEffect(() => {
+        handlePokemonName()
+    }, [])
+
+    console.log(pokemonName, "pokemonName====>")
 
     return (
         <>
             <div className="bg-white">
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 bg-gray-200 my-8">
-                    
-                    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
 
-                        <div className="group bg-slate-50 rounded-lg overflow-hidden">
+                    <div className="flex justify-center">
+
+                        <div className="group rounded-lg overflow-hidden bg-yellow-400 w-80">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white xl:aspect-h-8 xl:aspect-w-7 p-1">
                                 <img
-                                    alt={"bulbasaur"}
-                                    src={`https://img.pokemondb.net/artwork/${"bulbasaur"}.jpg`}
+                                    alt={pokemonName}
+                                    src={`https://img.pokemondb.net/artwork/${pokemonName}.jpg`}
                                     className="h-56 m-auto	object-cover object-center group-hover:opacity-75 px-8 py-2"
                                 />
                             </div>
-                            <h3 className="mt-4 text-cyan-900 px-2 mb-8 text-xl capitalize font-bold">{"bulbasaur"}</h3>
+                            <div className="mt-4 mb-8">
+                                <h3 className=" text-cyan-900 px-4  text-sm capitalize font-bold">Name: <span className="font-thin">{pokemonName}</span></h3>
+                                <h3 className=" text-cyan-900 px-4 text-sm capitalize font-bold">Type: <span className="font-thin">{"grass"}</span></h3>
+                                <h3 className=" text-cyan-900 px-4 text-sm capitalize font-bold">Stats: <span className="font-thin">{"hp ,attch"}</span></h3>
+                                <h3 className=" text-cyan-900 px-4 text-sm capitalize font-bold">Abilities: <span className="font-thin">{"blaze, jungle"}</span></h3>
+
+                            </div>
 
 
-                          
                         </div>
                     </div>
                 </div>
