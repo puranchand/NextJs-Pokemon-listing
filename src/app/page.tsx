@@ -1,10 +1,11 @@
 'use client';
 
 import axios from "axios";
-// import Image from "next/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-// import ArrowIcon from "./icons/icons-arrow.png"
+import ArrowIcon from "./icons/blue-arrow-50.png"
 import Link from 'next/link'
+
 
 
 export default function Home() {
@@ -39,10 +40,10 @@ export default function Home() {
               </select>
             </div>
             <div className="mt-4">
-            <input type="text" placeholder="Search..." className="px-2.5 py-2 border border-inherit	rounded-lg rounded-e-none" />
-            <button className="px-2.5 py-2 bg-cyan-800 text-white rounded-r-lg">Search</button>
+              <input type="text" placeholder="Search..." className="px-2.5 py-2 border border-inherit	rounded-lg rounded-e-none" />
+              <button className="px-2.5 py-2 bg-cyan-800 text-white rounded-r-lg">Search</button>
             </div>
-            
+
           </div>
         </div>
         <h2 className="sr-only">Products</h2>
@@ -58,14 +59,20 @@ export default function Home() {
                 />
               </div>
               <h3 className="mt-4 text-cyan-900 px-2 mb-8 text-xl capitalize font-bold">{pokemon.name}</h3>
-             
+
 
               <Link href={`/pokemon/${pokemon.name}`}>
-          
-            <div className="px-2 mt-1 text-lg font-medium text-gray-900 mb-4 text-cyan-700 text-sm cursor-pointer">{"Details ->"}
-                {/* <img src={ArrowIcon} alt="arrow-icon" /> */}
-              </div>
-          </Link>
+
+                <div className="px-2 mt-1 text-lg font-medium mb-4 text-cyan-600 text-sm cursor-pointer">{"Details "}
+                  <Image
+                    src={ArrowIcon}
+                    width={15}
+                    height={15}
+                    alt="arrow-icon"
+                    className="inline-block"
+                  />
+                </div>
+              </Link>
             </div>
           )) : ""}
         </div>
